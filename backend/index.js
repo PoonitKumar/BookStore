@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { Book } from "./models/bookModel.js";
 import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
-import dotenv from "dotenv";
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -33,11 +33,11 @@ app.get("/", (request, response) => {
 app.use("/books", booksRoute);
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(mongoDBURL)
   .then(() => {
     console.log("App connected to db");
-    app.listen(process.env.PORT || 5555, () => {
-      console.log(`App is listening on port: ${process.env.PORT || 5555}`);
+    app.listen(PORT, () => {
+      console.log(`App is listening to port:${PORT}`);
     });
   })
   .catch((error) => {
